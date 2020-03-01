@@ -10,6 +10,7 @@ import const
 import config
 import csv
 import graphics
+import dataFix
 
 def readData(dataFile, names):
     data = pd.read_csv(dataFile, names=names, encoding='latin-1')
@@ -127,7 +128,20 @@ def createTables(data):
         else:
             categoricalTable.append(constructTableCategory(data, row))
     return [continuosTable, categoricalTable]
-    
+
+def fixDataSet(data):
+    print('***********************DATA FIXING************************')
+    fixedValues = dataFix.removeExtremeData(data, const.VALUE)
+    print(data[const.VALUE].describe())
+    print('***********************REMOVING EXTREME VALUES*******************')
+    print(fixedValues[const.VALUE].describe())
+    print('***********************ADDING MISSING VALUES FOR OVERALLS*******************')
+    print('Before adding: ' + str(data[const.OVERALL].count()))
+    fixedOverall = dataFix.addEmptyData(data, const.OVERALL, findAvg(data, const.OVERALL))
+    print('After adding: ' + str(fixedOverall[const.OVERALL].count()))
+    print('Before adding: ' + str(data[const.PREFERRED_FOOT].count()))
+    fixedFoot = dataFix.addEmptyData(data, const.PREFERRED_FOOT, findMode(data, const.PREFERRED_FOOT, 0)['names'][0])
+    print('After adding: ' + str(fixedFoot[const.PREFERRED_FOOT].count()))
 
 def driver():
     data = readData(config.FILE_PATH, const.DATA_FIELDS)
@@ -136,5 +150,10 @@ def driver():
     printTable(tables[1], const.CATEGORY_TABLE_HEADER, 'categoricalTable.csv')
     graphics.paintHistogramContinous(data)
     graphics.paintHistogramCategorical(data)
+    fixDataSet(data)
+    graphics.paintScatterPlot(data)
+    graphics.paintCorrelations(data)
 
 driver()
+
+# https://www.kaggle.com/aricht1995/premier-league-epl-player-information

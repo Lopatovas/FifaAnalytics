@@ -2,6 +2,7 @@ import span as span
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from pandas.plotting import scatter_matrix
 import const
 
 def paintHistogramContinous(data):
@@ -32,4 +33,20 @@ def paintHistogramCategorical(data):
 
     heightGroup = data.groupby([const.HEIGHT]).size()
     heightGroup.plot(kind='bar')
+    plt.show()
+
+def paintScatterPlot(data):
+    #kinda compatable
+    data.plot.scatter(x=const.OVERALL, y=const.WAGE, colormap='viridis')
+    data.plot.scatter(x=const.OVERALL, y=const.POTENTIAL, colormap='viridis')
+    plt.show()
+    #no connection
+    data.plot.scatter(x=const.AGE, y=const.OVERALL, colormap='viridis')
+    data.plot.scatter(x=const.WEIGHT, y=const.POTENTIAL, colormap='viridis')
+    plt.show()
+
+def paintCorrelations(data):
+    correlations = data[[const.AGE, const.OVERALL, const.POTENTIAL, const.WAGE, const.VALUE,
+           const.WEIGHT]].corr()
+    scatter_matrix(correlations,figsize=(12,16), alpha=1)
     plt.show()
