@@ -9,9 +9,10 @@ from pandas.plotting import scatter_matrix
 import const
 import config
 import csv
+import graphics
 
 def readData(dataFile, names):
-    data = pd.read_csv(dataFile, names=names)
+    data = pd.read_csv(dataFile, names=names, encoding='latin-1')
     return data
 
 def getTotalNumberOfData(data):
@@ -133,5 +134,7 @@ def driver():
     tables = createTables(data)
     printTable(tables[0], const.CONTINOUS_TABLE_HEADER, 'continousTable.csv')
     printTable(tables[1], const.CATEGORY_TABLE_HEADER, 'categoricalTable.csv')
+    graphics.paintHistogramContinous(data)
+    graphics.paintHistogramCategorical(data)
 
 driver()
