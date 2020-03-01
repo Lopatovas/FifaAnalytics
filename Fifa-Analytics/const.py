@@ -1,1 +1,18 @@
-dataFields = ['Name','Age','Nationality','Overall','Potential','Club','Value','Wage','Preferred Foot','Position','Jersey Number','Contract Valid Until','Height','Weight']
+NAME = 'Name'
+AGE = 'Age' 
+NATIONALITY='Nationality'
+OVERALL = 'Overall'
+POTENTIAL = 'Potential'
+CLUB = 'Club'
+VALUE = 'Value'
+WAGE = 'Wage'
+PREFERRED_FOOT = 'Preferred Foot'
+POSITION = 'Position'
+JERSEY = 'Jersey Number'
+CONTRACT_VALID = 'Contract Valid Until'
+HEIGHT = 'Height'
+WEIGHT = 'Weight'
+
+DATA_FIELDS = [NAME, AGE, NATIONALITY, OVERALL, POTENTIAL, CLUB, VALUE, WAGE, PREFERRED_FOOT, POSITION, JERSEY, CONTRACT_VALID, HEIGHT, WEIGHT]
+
+LBS_TO_KG_RATIO = 0.45359237
