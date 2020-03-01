@@ -9,10 +9,13 @@ WAGE = 'Wage'
 PREFERRED_FOOT = 'Preferred Foot'
 POSITION = 'Position'
 JERSEY = 'Jersey Number'
-CONTRACT_VALID = 'Contract Valid Until'
 HEIGHT = 'Height'
 WEIGHT = 'Weight'
 
-DATA_FIELDS = [NAME, AGE, NATIONALITY, OVERALL, POTENTIAL, CLUB, VALUE, WAGE, PREFERRED_FOOT, POSITION, JERSEY, CONTRACT_VALID, HEIGHT, WEIGHT]
+DATA_FIELDS = [NAME, AGE, NATIONALITY, OVERALL, POTENTIAL, CLUB, VALUE, WAGE, PREFERRED_FOOT, POSITION, JERSEY, HEIGHT, WEIGHT]
 
-LBS_TO_KG_RATIO = 0.45359237
+CONTINOUS_TABLE_HEADER = ['Atributo pavadinimas', 'Kiekis(Eiluciu sk.)', 'Trukstamos reiksmes, %', 'Kardinalumas',
+                'Minimali reiksme', 'Maksimali reiksme', '1-asis kvartilis', '3-asis kvartilis', 'Vidurkis', 'Mediana', 'Standartinis nuokrypis']
+
+CATEGORY_TABLE_HEADER = ['Atributo pavadinimas', 'Kiekis(Eiluciu sk.)', 'Trukstamos reiksmes, %', 'Kardinalumas',
+                'Moda', 'Modos daznumas', 'Moda, %', '2-oji Moda', '2-osios Modos daznumas', '2-oji Moda, %']

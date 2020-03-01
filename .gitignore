@@ -5,3 +5,5 @@ env
 Fifa_Analytics.egg-info
 Fifa-Analytics/config.py
 Fifa-Analytics/__pycache__
+categoricalTable.csv
+continousTable.csv
