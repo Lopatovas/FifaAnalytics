@@ -1,0 +1,7 @@
+.vscode
+build
+dist
+env
+Fifa_Analytics.egg-info
+Fifa-Analytics/config.py
+Fifa-Analytics/__pycache__
