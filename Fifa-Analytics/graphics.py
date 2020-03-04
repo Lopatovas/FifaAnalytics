@@ -45,8 +45,19 @@ def paintScatterPlot(data):
     data.plot.scatter(x=const.WEIGHT, y=const.POTENTIAL, colormap='viridis')
     plt.show()
 
-def paintCorrelations(data):
+def paintSplom(data):
     correlations = data[[const.AGE, const.OVERALL, const.POTENTIAL, const.WAGE, const.VALUE,
            const.WEIGHT]].corr()
     scatter_matrix(correlations,figsize=(12,16), alpha=1)
+    plt.show()
+
+def paintBarPlot(data, firstProperty, secondProperty, firstPropertyValue, secondPropertyValuesArray, labels):
+    chartData = list()
+    for value in secondPropertyValuesArray:
+        chartData.append(len(data[data[firstProperty].isin([firstPropertyValue]) & data[secondProperty].isin([value])]))
+    plt.bar(labels, chartData)
+    plt.show()
+
+def paintBoxPlot(data, firstAtribute, secondAtribute):
+    data.boxplot(by=firstAtribute, column=secondAtribute, grid=False)
     plt.show()

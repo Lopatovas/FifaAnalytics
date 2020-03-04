@@ -143,6 +143,26 @@ def fixDataSet(data):
     fixedFoot = dataFix.addEmptyData(data, const.PREFERRED_FOOT, findMode(data, const.PREFERRED_FOOT, 0)['names'][0])
     print('After adding: ' + str(fixedFoot[const.PREFERRED_FOOT].count()))
 
+def findCorrelation(data, size=10):
+    corr = data.corr()
+    fig, ax = plt.subplots(figsize=(size, size))
+    ax.matshow(corr)
+    print(corr.columns)
+    plt.xticks(range(len(corr.columns)), corr.columns)
+    plt.yticks(range(len(corr.columns)), corr.columns)
+    print(corr)
+    plt.show()
+
+def findCovariation(data, size=10):
+    cov = data.cov()
+    fig, ax = plt.subplots(figsize=(size, size))
+    ax.matshow(cov)
+    plt.xticks(range(len(cov.columns)), cov.columns)
+    plt.yticks(range(len(cov.columns)), cov.columns)
+    print(cov)
+    plt.show()
+
+
 def driver():
     data = readData(config.FILE_PATH, const.DATA_FIELDS)
     tables = createTables(data)
@@ -152,7 +172,13 @@ def driver():
     graphics.paintHistogramCategorical(data)
     fixDataSet(data)
     graphics.paintScatterPlot(data)
-    graphics.paintCorrelations(data)
+    graphics.paintSplom(data)
+    graphics.paintBarPlot(data, const.POSITION, const.PREFERRED_FOOT, "Right Winger", ["Left", "Right"], ["Right Foot Right Wingers", "Left Foot Right Wingers"])
+    graphics.paintBarPlot(data, const.POSITION, const.PREFERRED_FOOT, "Left Winger", ["Left", "Right"], ["Right Foot Left Wingers", "Left Foot Left Wingers"])
+    graphics.paintBoxPlot(data, const.POSITION, const.AGE)
+    graphics.paintBoxPlot(data, const.CLUB, const.AGE)
+    findCorrelation(data)
+    findCovariation(data)
 
 driver()
 
